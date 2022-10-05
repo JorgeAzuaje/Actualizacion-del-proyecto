@@ -11,6 +11,15 @@ app.use('/api/sistema/equipos', routerEquipos);
 const routerTrabajos = require('./routers/trabajos.js')
 app.use('/api/sistema/trabajos', routerTrabajos);
 
+// Se agregaron las constantes para cada contralador, para importarlos
+
+const controladorEquipos = require('./controladores/controladores_equipos.js')
+app.use('/api/sistema/equipos', controladorEquipos)
+
+const controladorTrabajos = require('./controladores/controladores_trabajos.js')
+app.use('/api/sistema/trabajos', controladorTrabajos)
+////////////////////////////
+
 app.get('/', (req, res) => {
     res.send('Bienvenido al sistema de mantenimiento SMAO 💻.')
 });
