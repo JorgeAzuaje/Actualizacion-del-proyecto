@@ -28,5 +28,6 @@ controladorEquipos.post('/post', (req, res) => {
         "fecha_ult": "09/11/2022",
         "fecha_man": "03/10/2022"
     };
+    equipos.push(equipoNuevo);
     res.json(equipos);
 });
