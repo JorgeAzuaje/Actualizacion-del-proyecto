@@ -33,7 +33,6 @@ controladorEquipos.post('/post', (req, res) => {
 });
 
 // Se agregó la función PUT para editar los equipos existentes
-// Actualmente da error
 ////////////////// - Editar un Equipo existente - PUT - //////////////////
 
 controladorEquipos.put('/put/:equipoId', (req, res) => {
