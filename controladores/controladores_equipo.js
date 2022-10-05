@@ -36,7 +36,7 @@ controladorEquipos.post('/post', (req, res) => {
 // Actualmente da error
 ////////////////// - Editar un Equipo existente - PUT - //////////////////
 
-controladorEquipos.put('/put/:equipId', (req, res) => {
+controladorEquipos.put('/put/:equipoId', (req, res) => {
     const equipoActualizado = {
         "equipoId": "2",
         "nombEquipo": "PC DELL",
@@ -55,7 +55,7 @@ controladorEquipos.put('/put/:equipId', (req, res) => {
     } else {
         return res.status(404).send(`No se encontró un trabajo con el id ${equipoId} al cual actualizar la informacion`);
     }
-    res.json(equipo)
+    res.json(equipos)
 })
 
 module.exports = controladorEquipos
