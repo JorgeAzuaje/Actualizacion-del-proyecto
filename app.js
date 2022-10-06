@@ -3,7 +3,7 @@ const app = express();
 
 const {sistemaSMAO} = require('./datos/sistema_esquema.js');
 
-// Se agregó las constantes "routerEquipos" y "routerTrabajos" para importar la información de sus respectivos archivos
+// Routers
 
 const routerEquipos = require('./routers/equipos.js')
 app.use('/api/sistema/equipos', routerEquipos);
@@ -11,7 +11,7 @@ app.use('/api/sistema/equipos', routerEquipos);
 const routerTrabajos = require('./routers/trabajos.js')
 app.use('/api/sistema/trabajos', routerTrabajos);
 
-// Se agregaron las constantes para cada contralador, para importarlos
+// Controladores
 
 const controladorEquipos = require('./controladores/controladores_equipos.js')
 app.use('/api/sistema/equipos', controladorEquipos)
