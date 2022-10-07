@@ -33,7 +33,7 @@ controladorEquipos.post('/post', (req, res) => {
 });
 
 // Se agregó la función PUT para editar los equipos existentes
-// Actualmente da error
+
 ////////////////// - Editar un Equipo existente - PUT - //////////////////
 
 controladorEquipos.put('/put/:equipId', (req, res) => {
@@ -56,6 +56,26 @@ controladorEquipos.put('/put/:equipId', (req, res) => {
         return res.status(404).send(`No se encontró un trabajo con el id ${equipoId} al cual actualizar la informacion`);
     }
     res.json(equipo)
+})
+
+////////////////// - Editar un Equipo existente - PATCH - //////////////////
+
+controladorEquipos.patch('/patch/:equipoId', (req, res) => {
+    const infoEquiActualizada = {
+        "nombEquipo": "PC Lenovo",
+        "descripcion": "Computadora de Escritorio Lenovo"
+    };
+    const equipoId = req.params.equipoId;
+
+    const indice = equipos.findIndex(equipos => equipos.equipoId == equipoId);
+
+    if (indice >= 0) {
+        const equipoAModificar = equipos[indice]
+        Object.assign(equipoAModificar, infoEquiActualizada);
+    } else {
+        return res.status(404).send(`No se encontró un trabajo con el id ${equipoId} al cual actualizar la información`);
+    }
+    res.json(equipos)
 })
 
 module.exports = controladorEquipos
