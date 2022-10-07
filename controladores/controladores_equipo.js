@@ -36,7 +36,7 @@ controladorEquipos.post('/post', (req, res) => {
 
 ////////////////// - Editar un Equipo existente - PUT - //////////////////
 
-controladorEquipos.put('/put/:equipId', (req, res) => {
+controladorEquipos.put('/put/:equipoId', (req, res) => {
     const equipoActualizado = {
         "equipoId": "2",
         "nombEquipo": "PC DELL",
