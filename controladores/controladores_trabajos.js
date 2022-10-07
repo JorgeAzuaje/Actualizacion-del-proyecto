@@ -4,6 +4,7 @@ const controladorTrabajos = express.Router();
 
 controladorTrabajos.use(express.json())
 
+
 ////////////////// - Buscar un Trabajo por ID único - GET - //////////////////
 
 controladorTrabajos.get('/trabajoId/:idTrabajo', (req, res) => {
