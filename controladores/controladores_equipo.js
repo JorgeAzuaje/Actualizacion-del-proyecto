@@ -55,7 +55,7 @@ controladorEquipos.put('/put/:equipoId', (req, res) => {
     } else {
         return res.status(404).send(`No se encontró un trabajo con el id ${equipoId} al cual actualizar la informacion`);
     }
-    res.json(equipo)
+    res.json(equipos)
 })
 
 ////////////////// - Editar un Equipo existente - PATCH - //////////////////
