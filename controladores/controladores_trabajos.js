@@ -41,3 +41,66 @@ controladorTrabajos.get('/equipoId/:idEquipo/:idTrabajo', (req, res) => {
     }
     res.json(resultados);
 });
+
+controladorTrabajos.post('/post', (req, res) => {
+    let trabajoNuevo = {
+        "idTrabajo": "4",
+        "idEquipo": "2",
+        "nombreEquipos":"PC HP",
+        "fechaPlan":"06/07/2021",
+        "fechaIni": "08/07/2021",
+        "fechaFin": "15/07/2021",
+        "status": "Terminado",
+        "obsTecnico": "Procesador Defectuoso"
+};
+    trabajos.push(trabajoNuevo);
+    res.json(trabajos);
+});
+
+////////////////// - Editar un Trabajo existente - PUT - //////////////////
+
+controladorTrabajos.put('/put/:idTrabajo', (req, res) => {
+    const trabajoActualizado = {
+        "idTrabajo": "2",
+        "idEquipo": "2",
+        "nombreEquipos":"PC HP",
+        "fechaPlan":"06/07/2021",
+        "fechaIni": "10/07/2021",
+        "fechaFin": "20/08/2021",
+        "status": "Terminado",
+        "obsTecnico": "Tarjeta Madre",
+        "tipoDeTrabajo": "Correctivo"
+};
+    const idTrabajo = req.params.idTrabajo;
+
+    const indice = trabajos.findIndex(trabajos => trabajos.idTrabajo == idTrabajo)
+
+    if (indice >= 0) {
+        trabajos[indice] = trabajoActualizado;
+    } else {
+        return res.status(404).send(`No se encontró un trabajo con el id ${idTrabajo} al cual actualizar la informacion`);
+    }
+    res.json(trabajos)
+
+})
+
+////////////////// - Editar un Trabajo existente - PATCH - //////////////////
+
+controladorTrabajos.patch('/patch/:idTrabajo', (req, res) => {
+    const infoTrabActualizada = {
+        "idEquipo": "1",
+        "nombreEquipos":"VIT 8990",
+        "obsTecnico": "Boton de Inicio Dañado"
+    };
+    const idTrabajo = req.params.idTrabajo;
+
+    const indice = trabajos.findIndex(trabajos => trabajos.idTrabajo == idTrabajo);
+
+    if (indice >= 0) {
+        const trabajoAModificar = trabajos[indice]
+        Object.assign(trabajoAModificar, infoTrabActualizada);
+    } else {
+        return res.status(404).send(`No se encontró un trabajo con el id ${idTrabajo} al cual actualizar la información`);
+    }
+    res.json(trabajos)
+})
