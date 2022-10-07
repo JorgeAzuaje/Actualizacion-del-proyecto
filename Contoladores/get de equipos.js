@@ -15,3 +15,17 @@ controladorEquipos.get('/:equipoId', (req,res) => {
     }
     res.json(resultados);
 })
+
+////////////////// - Eliminar un Equipo existente - DELETE - //////////////////
+
+controladorEquipos.delete('/delete/:equipoId', (req, res) => {
+    const equipoId = req.params.equipoId;
+    const indice = equipos.findIndex(equipos => equipos.equipoId == equipoId)
+    
+    if(indice >= 0) {
+        equipos.splice(indice, 1)
+    } else {
+        return res.status(404).send(`No se encontró un trabajo con el id ${equipoId} el cual eliminar`);
+    }
+    res.json(equipos)
+})
