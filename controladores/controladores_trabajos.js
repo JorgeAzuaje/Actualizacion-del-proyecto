@@ -104,3 +104,19 @@ controladorTrabajos.patch('/patch/:idTrabajo', (req, res) => {
     }
     res.json(trabajos)
 })
+
+////////////////// - Eliminar un Trabajo existente - DELETE - //////////////////
+
+controladorTrabajos.delete('/delete/:idTrabajo', (req, res) => {
+    const idTrabajo = req.params.idTrabajo;
+    const indice = trabajos.findIndex(trabajos => trabajos.idTrabajo == idTrabajo)
+    
+    if(indice >= 0) {
+        trabajos.splice(indice, 1)
+    } else {
+        return res.status(404).send(`No se encontró un trabajo con el id ${idTrabajo} el cual eliminar`);
+    }
+    res.json(trabajos)
+})
+
+module.exports = controladorTrabajos

@@ -11,7 +11,7 @@ controladorEquipos.get('/:equipoId', (req,res) => {
     const resultados = equipos.filter(equipos => equipos.equipoId === equipoId);
 
     if (resultados.length === 0){
-        return res.status(404).send(`No se encontro ningun equipo con el id ${equipoId}.`)
+        return res.status(404).send(`No se encontro ningun equipo con el id ${equipoId} ERROR 404.`)
     }
     res.json(resultados);
 })
@@ -31,8 +31,6 @@ controladorEquipos.post('/post', (req, res) => {
     equipos.push(equipoNuevo);
     res.json(equipos);
 });
-
-// Se agregó la función PUT para editar los equipos existentes
 
 ////////////////// - Editar un Equipo existente - PUT - //////////////////
 

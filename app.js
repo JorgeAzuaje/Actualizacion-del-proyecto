@@ -1,4 +1,4 @@
-const express= require('express');
+const express = require('express');
 const app = express();
 
 const {sistemaSMAO} = require('./datos/sistema_esquema.js');
@@ -18,7 +18,8 @@ app.use('/api/sistema/equipos', controladorEquipos)
 
 const controladorTrabajos = require('./controladores/controladores_trabajos.js')
 app.use('/api/sistema/trabajos', controladorTrabajos)
-////////////////////////////
+
+// Routing
 
 app.get('/', (req, res) => {
     res.send('Bienvenido al sistema de mantenimiento SMAO 💻.')
